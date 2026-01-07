@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialSyncApp.Views.AddPostPage"
+             Title="New Post"
+             BackgroundColor="#121212">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,20">
+            <Label Text="Create New Post" FontSize="24" FontAttributes="Bold" TextColor="White" VerticalOptions="Center"/>
+            <Button Grid.Column="1" 
+                    Text="✕" 
+                    BackgroundColor="Transparent" 
+                    TextColor="#888" 
+                    FontSize="20" 
+                    FontAttributes="Bold"
+                    Clicked="OnCancelClicked"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20">
+
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Title" FontSize="14" FontAttributes="Bold" TextColor="#BBBBBB"/>
+                    <Frame Padding="0" 
+                           BorderColor="#333" 
+                           CornerRadius="10" 
+                           HasShadow="False"
+                           BackgroundColor="#1E1E1E">
+                        <Entry x:Name="TitleEntry" 
+                               Placeholder="What's on your mind?" 
+                               PlaceholderColor="#666"
+                               FontSize="16" 
+                               TextColor="White"
+                               Margin="15,0"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Category" FontSize="14" FontAttributes="Bold" TextColor="#BBBBBB"/>
+                    <Frame Padding="0" 
+                           BorderColor="#333" 
+                           CornerRadius="10" 
+                           HasShadow="False"
+                           BackgroundColor="#1E1E1E">
+                        <Picker x:Name="CategoryPicker" 
+                                Title="Select a Category" 
+                                TitleColor="#666"
+                                FontSize="16" 
+                                TextColor="White"
+                                Margin="10,0">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>General</x:String>
+                                    <x:String>Technology</x:String>
+                                    <x:String>Lifestyle</x:String>
+                                    <x:String>Career</x:String>
+                                    <x:String>Events</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Content" FontSize="14" FontAttributes="Bold" TextColor="#BBBBBB"/>
+                    <Frame Padding="0" 
+                           BorderColor="#333" 
+                           CornerRadius="10" 
+                           HasShadow="False" 
+                           HeightRequest="150"
+                           BackgroundColor="#1E1E1E">
+                        <Editor x:Name="ContentEditor" 
+                                Placeholder="Share your thoughts..." 
+                                PlaceholderColor="#666"
+                                FontSize="16" 
+                                TextColor="White"
+                                Margin="10" 
+                                AutoSize="TextChanges"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Image URL (Optional)" FontSize="14" FontAttributes="Bold" TextColor="#BBBBBB"/>
+                    <Frame Padding="0" 
+                           BorderColor="#333" 
+                           CornerRadius="10" 
+                           HasShadow="False"
+                           BackgroundColor="#1E1E1E">
+                        <Entry x:Name="ImageEntry" 
+                               Placeholder="https://example.com/image.png" 
+                               PlaceholderColor="#666"
+                               FontSize="14" 
+                               TextColor="White"
+                               Margin="15,0"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button Grid.Row="2"
+                Text="Post Now"
+                BackgroundColor="#6366F1"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="16"
+                CornerRadius="12"
+                HeightRequest="52"
+                Margin="0,20,0,0"
+                Clicked="OnPostClicked"/>
+
+        <Grid Grid.RowSpan="3" 
+              x:Name="LoadingOverlay" 
+              BackgroundColor="#CC000000" 
+              IsVisible="False">
+            <ActivityIndicator IsRunning="True" 
+                              Color="#6366F1" 
+                              HorizontalOptions="Center" 
+                              VerticalOptions="Center"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

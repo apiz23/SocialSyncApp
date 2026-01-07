@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialSyncApp.Views.LoginPage"
+             Title="Login"
+             BackgroundColor="#F5F7FA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
+
+            <Border StrokeThickness="0" 
+                    Background="White" 
+                    HeightRequest="120" 
+                    WidthRequest="120" 
+                    StrokeShape="RoundRectangle 60" 
+                    HorizontalOptions="Center" 
+                    Margin="0,0,0,10">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Opacity="0.1" Radius="20" Offset="0,5" />
+                </Border.Shadow>
+
+                <Image Source="icon.png"
+                       Aspect="AspectFit"
+                       HeightRequest="70"
+                       WidthRequest="70"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Border>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Welcome Back" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       TextColor="#2D3748" 
+                       HorizontalOptions="Center" />
+                <Label Text="Sign in to your SocialSync account" 
+                       FontSize="15" 
+                       TextColor="#718096" 
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <Border StrokeThickness="0" 
+                    Background="White" 
+                    Padding="25" 
+                    StrokeShape="RoundRectangle 20"
+                    Margin="0,10,0,0">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Opacity="0.08" Radius="15" Offset="0,4" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="20">
+
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Email Address" FontSize="14" FontAttributes="Bold" TextColor="#4A5568" />
+                        <Border StrokeThickness="1" Stroke="#E2E8F0" Background="#F8FAFC" StrokeShape="RoundRectangle 10" Padding="15,12">
+                            <Grid ColumnDefinitions="30,*" ColumnSpacing="10">
+                                <Path Grid.Column="0" 
+                                      Fill="#A0AEC0"
+                                      Aspect="Uniform"
+                                      VerticalOptions="Center"
+                                      HeightRequest="18"
+                                      Data="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+
+                                <Entry Grid.Column="1" 
+                                       x:Name="EmailEntry" 
+                                       Placeholder="Enter your email" 
+                                       Keyboard="Email" 
+                                       TextColor="#2D3748" 
+                                       PlaceholderColor="#A0AEC0" />
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="8">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Grid.Column="0" Text="Password" FontSize="14" FontAttributes="Bold" TextColor="#4A5568" />
+                            <Label Grid.Column="1" Text="Forgot Password?" FontSize="12" TextColor="#667eea" TextDecorations="Underline"/>
+                        </Grid>
+
+                        <Border StrokeThickness="1" Stroke="#E2E8F0" Background="#F8FAFC" StrokeShape="RoundRectangle 10" Padding="15,12">
+                            <Grid ColumnDefinitions="30,*,30" ColumnSpacing="10">
+                                <Path Grid.Column="0" 
+                                      Fill="#A0AEC0"
+                                      Aspect="Uniform"
+                                      VerticalOptions="Center"
+                                      HeightRequest="18"
+                                      Data="M18,8H17V6C17,3.24 14.76,1 12,1C9.24,1 7,3.24 7,6V8H6C4.9,8 4,8.9 4,10V20C4,21.1 4.9,22 6,22H18C19.1,22 20,21.1 20,20V10C20,8.9 19.1,8 18,8ZM12,17C10.9,17 10,16.1 10,15C10,13.9 10.9,13 12,13C13.1,13 14,13.9 14,15C14,16.1 13.1,17 12,17ZM15,8H9V6C9,4.34 10.34,3 12,3C13.66,3 15,4.34 15,6V8Z" />
+
+                                <Entry Grid.Column="1" 
+                                       x:Name="PasswordEntry" 
+                                       Placeholder="Enter your password" 
+                                       IsPassword="True" 
+                                       TextColor="#2D3748" 
+                                       PlaceholderColor="#A0AEC0" />
+
+                                <Grid Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnTogglePasswordTapped" />
+                                    </Grid.GestureRecognizers>
+
+                                    <Path x:Name="EyeOpenIcon"
+                                          Fill="#A0AEC0"
+                                          Aspect="Uniform"
+                                          HeightRequest="20"
+                                          IsVisible="False"
+                                          Data="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
+
+                                    <Path x:Name="EyeClosedIcon"
+                                          Fill="#A0AEC0"
+                                          Aspect="Uniform"
+                                          HeightRequest="20"
+                                          IsVisible="True"
+                                          Data="M11.83,9L15,12.16C15,12.11 15,12.05 15,12A3,3 0 0,0 12,9C11.94,9 11.89,9 11.83,9M7.53,9.8L9.08,11.35C9.03,11.56 9,11.77 9,12A3,3 0 0,0 12,15C12.22,15 12.44,14.97 12.65,14.92L14.2,16.47C13.53,16.8 12.79,17 12,17A5,5 0 0,1 7,12C7,11.21 7.2,10.47 7.53,9.8M2,4.27L4.28,6.55L4.73,7C3.08,8.3 1.78,10 1,12C2.73,16.39 7,19.5 12,19.5C13.55,19.5 15.03,19.2 16.38,18.66L16.81,19.08L19.73,22L21,20.73L3.27,3M12,7A5,5 0 0,1 17,12C17,12.64 16.87,13.26 16.64,13.82L19.57,16.75C21.07,15.5 22.27,13.86 23,12C21.27,7.61 17,4.5 12,4.5C10.6,4.5 9.27,4.75 8.07,5.2L10.17,7.3C10.74,7.11 11.35,7 12,7Z" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox x:Name="RememberMeCheckBox" Color="#667eea" />
+                        <Label Text="Remember me" FontSize="14" TextColor="#4A5568" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <Grid>
+                        <Button x:Name="LoginButton" 
+                                Text="Sign In" 
+                                FontSize="16" 
+                                FontAttributes="Bold" 
+                                TextColor="White" 
+                                HeightRequest="52" 
+                                CornerRadius="12" 
+                                Clicked="OnLoginClicked">
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#667eea" Offset="0.0" />
+                                    <GradientStop Color="#764ba2" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <Button.Shadow>
+                                <Shadow Brush="#667eea" Opacity="0.5" Radius="10" Offset="0,4" />
+                            </Button.Shadow>
+                        </Button>
+
+                        <ActivityIndicator x:Name="LoadingIndicator" 
+                                           IsVisible="False" 
+                                           IsRunning="False" 
+                                           Color="White"
+                                           VerticalOptions="Center" 
+                                           HorizontalOptions="Center"
+                                           InputTransparent="True"/>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="5" Margin="0,10,0,0">
+                <Label Text="Don't have an account?" FontSize="14" TextColor="#718096" />
+                <Label Text="Create an account" 
+                       FontSize="14" 
+                       TextColor="#667eea" 
+                       FontAttributes="Bold" 
+                       TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSignUpTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

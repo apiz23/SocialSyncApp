@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialSyncApp.Views.EditPostPage"
+             Title="Edit Post"
+             BackgroundColor="#121212">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Margin="0,0,0,25" VerticalOptions="Center">
+            <Button Grid.Column="0" 
+                    Text="←" 
+                    BackgroundColor="Transparent" 
+                    TextColor="#888" 
+                    FontSize="22"
+                    FontAttributes="Bold"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    CornerRadius="20"
+                    Clicked="OnCancelClicked"/>
+
+            <Label Grid.Column="1" 
+                   Text="Edit Post" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   TextColor="White" 
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+
+            <!-- Optional: Add Delete Button -->
+            <Button Grid.Column="2" 
+                    Text="Delete" 
+                    BackgroundColor="Transparent" 
+                    TextColor="#FF6B6B" 
+                    FontSize="14"
+                    FontAttributes="Bold"
+                    HeightRequest="30"
+                    CornerRadius="15"
+                    Clicked="OnDeleteClicked"
+                    IsVisible="False"/>
+        </Grid>
+
+        <!-- Content -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20">
+
+                <!-- Title Section -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Title" 
+                           FontSize="14" 
+                           FontAttributes="Bold" 
+                           TextColor="#BBBBBB"/>
+                    <Frame Padding="0" 
+                           BorderColor="#333" 
+                           CornerRadius="12" 
+                           HasShadow="False"
+                           BackgroundColor="#1E1E1E">
+                        <Entry x:Name="TitleEntry" 
+                               FontSize="16" 
+                               TextColor="White"
+                               Placeholder="Enter post title"
+                               PlaceholderColor="#666"
+                               Margin="16,0"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Category Section -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Category" 
+                           FontSize="14" 
+                           FontAttributes="Bold" 
+                           TextColor="#BBBBBB"/>
+                    <Frame Padding="0" 
+                           BorderColor="#333" 
+                           CornerRadius="12" 
+                           HasShadow="False"
+                           BackgroundColor="#1E1E1E">
+                        <Picker x:Name="CategoryPicker" 
+                                Title="Select Category" 
+                                TitleColor="#666"
+                                FontSize="16" 
+                                TextColor="White"
+                                Margin="10,0">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>General</x:String>
+                                    <x:String>Technology</x:String>
+                                    <x:String>Lifestyle</x:String>
+                                    <x:String>Career</x:String>
+                                    <x:String>Events</x:String>
+                                    <x:String>Entertainment</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Content Section -->
+                <VerticalStackLayout Spacing="8">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0" 
+                               Text="Content" 
+                               FontSize="14" 
+                               FontAttributes="Bold" 
+                               TextColor="#BBBBBB"/>
+                        <Label Grid.Column="1" 
+                               x:Name="CharacterCountLabel"
+                               Text="0/500" 
+                               FontSize="12" 
+                               TextColor="#888"
+                               HorizontalOptions="End"/>
+                    </Grid>
+                    <Frame Padding="0" 
+                           BorderColor="#333" 
+                           CornerRadius="12" 
+                           HasShadow="False" 
+                           HeightRequest="180"
+                           BackgroundColor="#1E1E1E">
+                        <Editor x:Name="ContentEditor" 
+                                FontSize="16" 
+                                TextColor="White"
+                                Placeholder="What would you like to share?"
+                                PlaceholderColor="#666"
+                                Margin="12"
+                                AutoSize="TextChanges"
+                                TextChanged="OnContentTextChanged"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Image Section -->
+                <VerticalStackLayout Spacing="8" IsVisible="False">
+                    <Label Text="Image" 
+                           FontSize="14" 
+                           FontAttributes="Bold" 
+                           TextColor="#BBBBBB"/>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Frame Grid.Column="0" 
+                               Padding="0" 
+                               BorderColor="#333" 
+                               CornerRadius="12" 
+                               HasShadow="False"
+                               HeightRequest="80"
+                               BackgroundColor="#1E1E1E">
+                            <Image x:Name="PostImage" 
+                                   Aspect="AspectFill"
+                                   IsVisible="False"/>
+                        </Frame>
+                        <Button Grid.Column="1" 
+                                Text="✕" 
+                                BackgroundColor="#333" 
+                                TextColor="White"
+                                FontSize="12"
+                                WidthRequest="30"
+                                HeightRequest="30"
+                                CornerRadius="15"
+                                Margin="10,0,0,0"
+                                IsVisible="False"/>
+                    </Grid>
+
+                    <Button Text="Change Image" 
+                            BackgroundColor="#333" 
+                            TextColor="#888"
+                            BorderColor="#444"
+                            BorderWidth="1"
+                            CornerRadius="10"
+                            HeightRequest="40"
+                            FontSize="13"/>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Action Buttons -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,20,0,0">
+            <Button Grid.Column="0" 
+                    Text="Cancel" 
+                    BackgroundColor="#333" 
+                    TextColor="#888"
+                    BorderColor="#444"
+                    BorderWidth="1"
+                    CornerRadius="12"
+                    HeightRequest="52"
+                    FontSize="16"
+                    Clicked="OnCancelClicked"/>
+
+            <Button Grid.Column="1" 
+                    Text="Save" 
+                    BackgroundColor="#6366F1"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    CornerRadius="12"
+                    HeightRequest="52"
+                    Clicked="OnSaveClicked"/>
+        </Grid>
+
+        <!-- Loading Overlay -->
+        <Grid Grid.RowSpan="3" 
+              x:Name="LoadingOverlay" 
+              BackgroundColor="#CC000000" 
+              IsVisible="False">
+            <ActivityIndicator IsRunning="True" 
+                              Color="#6366F1" 
+                              HorizontalOptions="Center" 
+                              VerticalOptions="Center"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

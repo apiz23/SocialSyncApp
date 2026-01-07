@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialSyncApp.Views.UsersPage"
+             Title="Users">
+
+    <Grid RowDefinitions="Auto,*" Padding="15">
+
+        <!-- Header with Add Button -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,10">
+            <Label Text="All Users" FontSize="24" FontAttributes="Bold" 
+                   VerticalOptions="Center"/>
+            <Button Grid.Column="1" Text="+ Add User" BackgroundColor="#6200EA" 
+                    TextColor="White" CornerRadius="8" Clicked="OnAddUserClicked"/>
+        </Grid>
+
+        <!-- Users List -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="10">
+
+                <!-- User Card 1 -->
+                <Frame Padding="15" CornerRadius="10" HasShadow="True">
+                    <Grid ColumnDefinitions="60,*,Auto" ColumnSpacing="15">
+                        <Frame Grid.Column="0" CornerRadius="30" Padding="0" 
+                               WidthRequest="60" HeightRequest="60">
+                            <Image Source="https://i.pravatar.cc/150?img=1" Aspect="AspectFill"/>
+                        </Frame>
+                        <StackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="John Doe" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="john.doe@email.com" FontSize="12" TextColor="Gray"/>
+                            <Label Text="Role: Admin" FontSize="11" TextColor="#6200EA"/>
+                        </StackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="5">
+                            <Button Text="✏️" BackgroundColor="#03DAC6" TextColor="Black" 
+                                    WidthRequest="50" Clicked="OnEditClicked"/>
+                            <Button Text="🗑️" BackgroundColor="#CF6679" TextColor="White" 
+                                    WidthRequest="50" Clicked="OnDeleteClicked"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- User Card 2 -->
+                <Frame Padding="15" CornerRadius="10" HasShadow="True">
+                    <Grid ColumnDefinitions="60,*,Auto" ColumnSpacing="15">
+                        <Frame Grid.Column="0" CornerRadius="30" Padding="0" 
+                               WidthRequest="60" HeightRequest="60">
+                            <Image Source="https://i.pravatar.cc/150?img=5" Aspect="AspectFill"/>
+                        </Frame>
+                        <StackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Sarah Smith" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="sarah.s@email.com" FontSize="12" TextColor="Gray"/>
+                            <Label Text="Role: User" FontSize="11" TextColor="#6200EA"/>
+                        </StackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="5">
+                            <Button Text="✏️" BackgroundColor="#03DAC6" TextColor="Black" 
+                                    WidthRequest="50" Clicked="OnEditClicked"/>
+                            <Button Text="🗑️" BackgroundColor="#CF6679" TextColor="White" 
+                                    WidthRequest="50" Clicked="OnDeleteClicked"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- User Card 3 -->
+                <Frame Padding="15" CornerRadius="10" HasShadow="True">
+                    <Grid ColumnDefinitions="60,*,Auto" ColumnSpacing="15">
+                        <Frame Grid.Column="0" CornerRadius="30" Padding="0" 
+                               WidthRequest="60" HeightRequest="60">
+                            <Image Source="https://i.pravatar.cc/150?img=12" Aspect="AspectFill"/>
+                        </Frame>
+                        <StackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Mike Johnson" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="mike.j@email.com" FontSize="12" TextColor="Gray"/>
+                            <Label Text="Role: Moderator" FontSize="11" TextColor="#6200EA"/>
+                        </StackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="5">
+                            <Button Text="✏️" BackgroundColor="#03DAC6" TextColor="Black" 
+                                    WidthRequest="50" Clicked="OnEditClicked"/>
+                            <Button Text="🗑️" BackgroundColor="#CF6679" TextColor="White" 
+                                    WidthRequest="50" Clicked="OnDeleteClicked"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- User Card 4 -->
+                <Frame Padding="15" CornerRadius="10" HasShadow="True">
+                    <Grid ColumnDefinitions="60,*,Auto" ColumnSpacing="15">
+                        <Frame Grid.Column="0" CornerRadius="30" Padding="0" 
+                               WidthRequest="60" HeightRequest="60">
+                            <Image Source="https://i.pravatar.cc/150?img=20" Aspect="AspectFill"/>
+                        </Frame>
+                        <StackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Emily Davis" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="emily.d@email.com" FontSize="12" TextColor="Gray"/>
+                            <Label Text="Role: User" FontSize="11" TextColor="#6200EA"/>
+                        </StackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="5">
+                            <Button Text="✏️" BackgroundColor="#03DAC6" TextColor="Black" 
+                                    WidthRequest="50" Clicked="OnEditClicked"/>
+                            <Button Text="🗑️" BackgroundColor="#CF6679" TextColor="White" 
+                                    WidthRequest="50" Clicked="OnDeleteClicked"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

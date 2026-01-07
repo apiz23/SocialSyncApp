@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialSyncApp.Views.EditEventPage"
+             Title="Edit Event"
+             BackgroundColor="#121212">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="15">
+            <Button Grid.Column="0" 
+                    Text="✕" 
+                    BackgroundColor="Transparent" 
+                    TextColor="White" 
+                    FontSize="20"
+                    Clicked="OnCancelClicked"/>
+
+            <Label Grid.Column="1" 
+                   Text="Edit Event" 
+                   TextColor="White" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"/>
+
+            <Button Grid.Column="2" 
+                    Text="Save" 
+                    BackgroundColor="Transparent" 
+                    TextColor="#03DAC6" 
+                    FontSize="16" 
+                    FontAttributes="Bold"
+                    Clicked="OnSaveClicked"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="20">
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Event Title" TextColor="#BBB" FontSize="13"/>
+                    <Frame BackgroundColor="#1E1E1E" BorderColor="#333" CornerRadius="10" Padding="0">
+                        <Entry x:Name="TitleEntry" TextColor="White" Placeholder="Event Name" Margin="10,0"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Description" TextColor="#BBB" FontSize="13"/>
+                    <Frame BackgroundColor="#1E1E1E" BorderColor="#333" CornerRadius="10" Padding="0" HeightRequest="120">
+                        <Editor x:Name="DescriptionEditor" TextColor="White" Placeholder="Event details..." Margin="10" AutoSize="TextChanges"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                    <VerticalStackLayout Grid.Column="0" Spacing="5">
+                        <Label Text="Date" TextColor="#BBB" FontSize="13"/>
+                        <Frame BackgroundColor="#1E1E1E" BorderColor="#333" CornerRadius="10" Padding="0">
+                            <DatePicker x:Name="EventDatePicker" TextColor="White" Margin="10,0"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="5">
+                        <Label Text="Time" TextColor="#BBB" FontSize="13"/>
+                        <Frame BackgroundColor="#1E1E1E" BorderColor="#333" CornerRadius="10" Padding="0">
+                            <TimePicker x:Name="EventTimePicker" TextColor="White" Margin="10,0"/>
+                        </Frame>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Location" TextColor="#BBB" FontSize="13"/>
+                    <Frame BackgroundColor="#1E1E1E" BorderColor="#333" CornerRadius="10" Padding="0">
+                        <Entry x:Name="LocationEntry" TextColor="White" Placeholder="Where is it happening?" Margin="10,0"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Max Participants (Optional)" TextColor="#BBB" FontSize="13"/>
+                    <Frame BackgroundColor="#1E1E1E" BorderColor="#333" CornerRadius="10" Padding="0">
+                        <Entry x:Name="MaxParticipantsEntry" TextColor="White" Keyboard="Numeric" Placeholder="e.g. 50" Margin="10,0"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Image URL (Optional)" TextColor="#BBB" FontSize="13"/>
+                    <Frame BackgroundColor="#1E1E1E" BorderColor="#333" CornerRadius="10" Padding="0">
+                        <Entry x:Name="ImageUrlEntry" TextColor="White" Placeholder="https://..." Margin="10,0"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.RowSpan="3" 
+              x:Name="LoadingOverlay" 
+              BackgroundColor="#CC000000" 
+              IsVisible="False">
+            <ActivityIndicator IsRunning="True" Color="#03DAC6" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialSyncApp.Views.HomePage"
+             Title="F.R.I.E.N.D.S">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Welcome to F.R.I.E.N.D.S" 
+                   FontSize="28" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,30"/>
+
+            <!-- Friends Module -->
+            <Frame BorderColor="#6C5CE7" CornerRadius="15" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="👥 Friends" FontSize="22" FontAttributes="Bold"/>
+                    <Label Text="Manage your friends list" TextColor="Gray"/>
+                    <Button Text="View Friends" 
+                            BackgroundColor="#6C5CE7" 
+                            TextColor="White"
+                            Clicked="OnFriendsClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Events Module -->
+            <Frame BorderColor="#00B894" CornerRadius="15" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="📅 Events" FontSize="22" FontAttributes="Bold"/>
+                    <Label Text="View upcoming activities" TextColor="Gray"/>
+                    <Button Text="View Events" 
+                            BackgroundColor="#00B894" 
+                            TextColor="White"
+                            Clicked="OnEventsClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Posts Module -->
+            <Frame BorderColor="#FD79A8" CornerRadius="15" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="💬 Posts" FontSize="22" FontAttributes="Bold"/>
+                    <Label Text="See what's happening" TextColor="Gray"/>
+                    <Button Text="View Posts" 
+                            BackgroundColor="#FD79A8" 
+                            TextColor="White"
+                            Clicked="OnPostsClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Profile Module -->
+            <Frame BorderColor="#FDCB6E" CornerRadius="15" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="👤 Profile" FontSize="22" FontAttributes="Bold"/>
+                    <Label Text="Manage your account" TextColor="Gray"/>
+                    <Button Text="View Profile" 
+                            BackgroundColor="#FDCB6E" 
+                            TextColor="White"
+                            Clicked="OnProfileClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

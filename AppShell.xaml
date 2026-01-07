@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="SocialSyncApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:SocialSyncApp.Views"
+    FlyoutBehavior="Flyout">
+
+    <!-- ===================== -->
+    <!-- 🔐 LOGIN (NO SIDEBAR) -->
+    <!-- ===================== -->
+    <ShellContent
+        Route="LoginPage"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        FlyoutItemIsVisible="False" />
+
+    <!-- ===================== -->
+    <!-- 🏠 SIDEBAR MENU -->
+    <!-- ===================== -->
+
+    <FlyoutItem Title="Home" Icon="home.png" Route="Main">
+        <ShellContent
+            Route="MainPage"
+            ContentTemplate="{DataTemplate views:MainPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Friends" Icon="friends.png">
+        <ShellContent
+            Route="FriendsPage"
+            ContentTemplate="{DataTemplate views:FriendsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Events" Icon="events.png">
+        <ShellContent
+            Route="EventsPage"
+            ContentTemplate="{DataTemplate views:EventsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Posts" Icon="posts.png">
+        <ShellContent
+            Route="PostsPage"
+            ContentTemplate="{DataTemplate views:PostsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Profile" Icon="profile.png">
+        <ShellContent
+            Route="ProfilePage"
+            ContentTemplate="{DataTemplate views:ProfilePage}" />
+    </FlyoutItem>
+
+    <!-- ===================== -->
+    <!-- 🚪 LOGOUT -->
+    <!-- ===================== -->
+    <MenuItem
+        Text="Logout"
+        IconImageSource="logout.png"
+        Clicked="OnLogoutClicked" />
+
+</Shell>

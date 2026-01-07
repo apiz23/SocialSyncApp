@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialSyncApp.Views.EditProfilePage"
+             Title="Edit Profile"
+             BackgroundColor="#F5F7FA">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,20">
+            <Label Text="Edit Profile" FontSize="24" FontAttributes="Bold" TextColor="#333" VerticalOptions="Center"/>
+            <Button Grid.Column="1" Text="✕" BackgroundColor="Transparent" TextColor="#666" FontSize="20" Clicked="OnCancelClicked"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="15">
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Full Name" FontSize="14" FontAttributes="Bold" TextColor="#666"/>
+                    <Frame Padding="0" BorderColor="#E0E0E0" CornerRadius="8" HasShadow="False">
+                        <Entry x:Name="NameEntry" Placeholder="Your Name" FontSize="16" Margin="10,0"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Phone Number" FontSize="14" FontAttributes="Bold" TextColor="#666"/>
+                    <Frame Padding="0" BorderColor="#E0E0E0" CornerRadius="8" HasShadow="False">
+                        <Entry x:Name="PhoneEntry" Placeholder="+60..." Keyboard="Telephone" FontSize="16" Margin="10,0"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Bio" FontSize="14" FontAttributes="Bold" TextColor="#666"/>
+                    <Frame Padding="0" BorderColor="#E0E0E0" CornerRadius="8" HasShadow="False" HeightRequest="100">
+                        <Editor x:Name="BioEditor" Placeholder="Tell us about yourself..." FontSize="16" Margin="10"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <Label Text="Personas / Interests" FontSize="16" FontAttributes="Bold" TextColor="#333" Margin="0,10,0,0"/>
+
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                    <VerticalStackLayout Grid.Column="0" Spacing="5">
+                        <Label Text="#1" FontSize="12" TextColor="#999" HorizontalOptions="Center"/>
+                        <Frame Padding="0" BorderColor="#E0E0E0" CornerRadius="8" HasShadow="False">
+                            <Entry x:Name="Persona1Entry" Placeholder="Tech" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="5">
+                        <Label Text="#2" FontSize="12" TextColor="#999" HorizontalOptions="Center"/>
+                        <Frame Padding="0" BorderColor="#E0E0E0" CornerRadius="8" HasShadow="False">
+                            <Entry x:Name="Persona2Entry" Placeholder="Sports" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="2" Spacing="5">
+                        <Label Text="#3" FontSize="12" TextColor="#999" HorizontalOptions="Center"/>
+                        <Frame Padding="0" BorderColor="#E0E0E0" CornerRadius="8" HasShadow="False">
+                            <Entry x:Name="Persona3Entry" Placeholder="Art" FontSize="14" HorizontalTextAlignment="Center"/>
+                        </Frame>
+                    </VerticalStackLayout>
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button Grid.Row="2"
+                Text="Save Changes"
+                BackgroundColor="#6200EA"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="16"
+                CornerRadius="12"
+                HeightRequest="50"
+                Margin="0,20,0,0"
+                Clicked="OnSaveClicked"/>
+
+        <Grid Grid.RowSpan="3" x:Name="LoadingOverlay" BackgroundColor="#80000000" IsVisible="False">
+            <ActivityIndicator IsRunning="True" Color="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>
